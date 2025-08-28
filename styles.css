@@ -139,8 +139,8 @@ body {
 }
 
 .logo-image {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     object-fit: contain;
     animation: pulse 3s infinite;
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
@@ -1217,6 +1217,192 @@ body {
     border-color: #495057;
 }
 
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-dark);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--white);
+    z-index: 9999;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.mobile-menu.active {
+    display: flex;
+    opacity: 1;
+}
+
+.mobile-menu-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--white);
+    padding: 2rem;
+    min-width: 300px;
+    text-align: center;
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.mobile-menu-close:hover {
+    background: var(--light-gray);
+    color: var(--text-dark);
+}
+
+.mobile-menu-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-orange);
+}
+
+/* Menu Logo Styles */
+.menu-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.menu-logo-image {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.menu-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-brand-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+}
+
+.menu-brand-tagline {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Header Logo Styles */
+.logo-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-logo {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.logo-text h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-orange);
+}
+
+.logo-text .tagline {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+.mobile-contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.mobile-contact-item:last-child {
+    border-bottom: none;
+}
+
+.mobile-contact-label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.mobile-contact-link {
+    font-size: 1.125rem;
+    color: var(--primary-orange);
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.mobile-contact-link:hover {
+    color: var(--primary-orange-dark);
+    transform: scale(1.05);
+}
+
 /* Stats Section */
 .stats {
     background: linear-gradient(135deg, var(--primary-orange), var(--secondary-orange));
@@ -1362,7 +1548,11 @@ body {
     }
 
     .cta-buttons {
-        justify-content: center;
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
     }
 
     .hero {

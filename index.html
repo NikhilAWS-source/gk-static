@@ -5,376 +5,1132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GK Enterprises - Premium Cleaning Solutions</title>
-    <meta name="description"
-        content="Your trusted partner for complete cleaning solutions. Quality cleaning products, accessories, and machinery to homes and institutions.">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"
+        onerror="this.onerror=null;this.href='https://use.fontawesome.com/releases/v6.4.0/css/all.css'">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+
+
+
+
+        /* Ensure icons display properly */
+        .fas,
+        .fab,
+        .far,
+        .fa {
+            font-style: normal;
+            font-variant: normal;
+            text-rendering: auto;
+            line-height: 1;
+            display: inline-block;
+        }
+
+        /* Coming Soon Banner */
+        .coming-soon-banner {
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            font-weight: 600;
+            animation: slideInDown 0.8s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coming-soon-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            animation: slideInDown 1s ease-out 0.3s both;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo h1 {
+            color: #ff6b35;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .tagline {
+            color: #666;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .header-cta {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: #fff;
+            border: 2px solid #ff6b35;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            color: #ff6b35;
+            cursor: pointer;
+            padding: 0.6rem;
+            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu-btn:hover {
+            background: #ff6b35;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .mobile-menu-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Off-canvas Menu */
+        .off-canvas-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 320px;
+            height: 100vh;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            z-index: 9999;
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            overflow-y: auto;
+            padding: 0;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .off-canvas-menu.active {
+            right: 0;
+        }
+
+        .menu-header {
+            padding: 2rem 1.5rem 1rem;
+            /* border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
+            position: relative;
+        }
+
+        .menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .menu-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .menu-logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-tagline {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .menu-content {
+            padding: 2rem 1.5rem;
+        }
+
+        .menu-section {
+            margin-bottom: 2rem;
+        }
+
+        .menu-section h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            transform: translateX(50px);
+            opacity: 0;
+            animation: slideInFromRight 0.5s ease-out forwards;
+            min-height: 80px;
+        }
+
+        .menu-item:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .menu-item:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .menu-item:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .menu-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .menu-item i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .menu-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .menu-item-title {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .menu-item-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            line-height: 1.3;
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 1.5rem 0;
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @keyframes slideInFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cta-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transform: translateY(20px);
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .cta-btn:nth-child(1) {
+            animation-delay: 0.8s;
+        }
+
+        .cta-btn:nth-child(2) {
+            animation-delay: 0.9s;
+        }
+
+        .cta-btn:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .cta-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .cta-secondary {
+            background: #25d366;
+            color: white;
+        }
+
+        .cta-tertiary {
+            background: transparent;
+            color: #2c3e50;
+            border: 2px solid #2c3e50;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1.5" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.7s forwards;
+        }
+
+        .action-note {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.9s forwards;
+        }
+
+        .hero-cta {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.1s forwards;
+        }
+
+        .main-cta {
+            background: #ff6b35;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .main-cta:hover {
+            background: #e55a2e;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: #ff6b35;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            animation: slideInLeft 0.8s ease-out 0.3s forwards;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #666;
+        }
+
+        .promises {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .promise-item {
+            background: linear-gradient(45deg, #ff6b35, #ff8c42);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            transform: scale(0);
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .promise-item:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .promise-item:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .promise-item:nth-child(3) {
+            animation-delay: 0.7s;
+        }
+
+        .promise-item:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .about-visual {
+            opacity: 0;
+            animation: slideInRight 0.8s ease-out 0.5s forwards;
+        }
+
+        .cleaning-icon {
+            font-size: 8rem;
+            color: #ff6b35;
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Product Categories */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideInUp 0.8s ease-out forwards;
+        }
+
+        .product-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .product-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .product-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .product-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .product-card:nth-child(5) {
+            animation-delay: 1s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Clients Section */
+        .clients-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 20px;
+            margin: 2rem 0;
+            padding: 3rem 2rem;
+        }
+
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .client-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transform: scale(0);
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .client-item:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .client-item:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .client-item:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        .client-item:nth-child(4) {
+            animation-delay: 0.5s;
+        }
+
+        .client-item:nth-child(5) {
+            animation-delay: 0.6s;
+        }
+
+        .client-item:nth-child(6) {
+            animation-delay: 0.7s;
+        }
+
+        .client-icon {
+            font-size: 2rem;
+            color: #ff6b35;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+            color: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact-btn {
+            background: white;
+            color: #ff6b35;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateX(-50px);
+            opacity: 0;
+            animation: slideInLeft 0.6s ease-out forwards;
+        }
+
+        .contact-btn:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .contact-btn:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .contact-btn:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .contact-btn:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Animations */
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .promises {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .clients-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            /* Hide desktop CTA buttons on mobile */
+            .header-cta {
+                display: none !important;
+            }
+
+            /* Show mobile menu button */
+            .mobile-menu-btn {
+                display: flex !important;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cta-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .cleaning-icon {
+                font-size: 5rem;
+            }
+
+            .product-card {
+                padding: 1.5rem;
+            }
+
+            /* Adjust off-canvas menu for smaller screens */
+            .off-canvas-menu {
+                width: 90%;
+            }
+
+            .menu-content {
+                padding: 1.5rem 1rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <!-- Coming Soon Banner -->
     <div class="coming-soon-banner">
-        <div class="banner-content">
-            <i class="fas fa-rocket"></i>
-            <span>Online Ordering Coming Soon! Order via Call, WhatsApp, or Email for now.</span>
-        </div>
+        </i> Online Ordering Coming Soon!
     </div>
 
     <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo-section">
-                    <div class="logo">
-                        <div class="logo-icon">
-                            <img src="logo.png" alt="GK Enterprises Logo" class="logo-image">
-                        </div>
-                        <span>GK Enterprises</span>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-content" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="logo.png" style="width: 50px; height: 50px;" alt="GK Enterprises Logo" class="logo-image">
+                    <div class="logo-text">
+                        <h1 style=" color: #000000; font-size: 20px; font-weight: 600;">GK Enterprises</h1>
+                        <div class="tagline">Premium Cleaning Solutions</div>
                     </div>
-                    <p class="tagline">Premium Cleaning Solutions</p>
-                </div>
-                <div class="cta-buttons">
-                    <a href="tel:7386438484" class="cta-btn call">
-                        <i class="fas fa-phone"></i>
-                        <span>Call Now</span>
-                    </a>
-                    <a href="https://wa.me/7386438484" class="cta-btn whatsapp" target="_blank">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>WhatsApp Us</span>
-                    </a>
-                    <a href="mailto:gkenterprises.management@gmail.com" class="cta-btn email">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email Us</span>
-                    </a>
                 </div>
             </div>
-        </div>
+            <div class="header-cta">
+                <a href="tel:7386438484" class="cta-btn cta-primary">
+                    <i class="fas fa-phone"></i> Call Now
+                </a>
+                <a href="https://wa.me/917386438484" class="cta-btn cta-secondary">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Us
+                </a>
+                <a href="mailto:gkenterprises.management@gmail.com" class="cta-btn cta-tertiary">
+                    <i class="fas fa-envelope"></i> Email Us
+                </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
     </header>
+
+    <!-- Off-canvas Menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="off-canvas-menu" id="offCanvasMenu">
+        <div class="menu-header">
+
+            <button class="menu-close" id="menuClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="menu-content">
+            <div class="menu-section">
+                <h3>Contact Us</h3>
+                <a href="tel:7386438484" class="menu-item">
+                    <i class="fas fa-phone"></i>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">Call Now</div>
+                        <div class="menu-item-subtitle">7386438484</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/917386438484" class="menu-item">
+                    <i class="fas fa-comments"></i>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">WhatsApp</div>
+                        <div class="menu-item-subtitle">Quick messaging</div>
+                    </div>
+                </a>
+                <a href="mailto:gkenterprises.management@gmail.com" class="menu-item">
+                    <i class="fas fa-envelope"></i>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">Email Us</div>
+                        <div class="menu-item-subtitle">Send inquiry</div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="menu-divider"></div>
+
+            <div class="menu-section">
+                <h3>Quick Links</h3>
+                <a href="#about" class="menu-item" data-close-menu>
+                    <i class="fas fa-info-circle"></i>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">About Us</div>
+                        <div class="menu-item-subtitle">Our story</div>
+                    </div>
+                </a>
+                <a href="#products" class="menu-item" data-close-menu>
+                    <i class="fas fa-box"></i>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">Products</div>
+                        <div class="menu-item-subtitle">Our offerings</div>
+                    </div>
+                </a>
+                <a href="#clients" class="menu-item" data-close-menu>
+                    <i class="fas fa-users"></i>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">Our Clients</div>
+                        <div class="menu-item-subtitle">Who we serve</div>
+                    </div>
+                </a>
+                <a href="#contact" class="menu-item" data-close-menu>
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="menu-item-content">
+                        <div class="menu-item-title">Contact</div>
+                        <div class="menu-item-subtitle">Get in touch</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-background">
-            <div class="hero-pattern"></div>
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">Your Trusted Partner for Complete Cleaning Solutions</h1>
-                    <p class="hero-subtitle">Supplying quality cleaning products, accessories, and machinery to homes
-                        and
-                        institutions.</p>
-                    <div class="action-note">1
-                        <div class="note-icon">👉</div>
-                        <div class="note-content">
-                            <strong>Online Ordering Coming Soon!</strong>
-                            <span>For now, order via Call, WhatsApp, or Email.</span>
-                        </div>
-                    </div>
-                    <a href="#contact" class="hero-cta">Contact Us Today</a>
-                </div>
-                <div class="hero-visual">
-                    <div class="hero-image-container">
-                        <div class="product-showcase">
-                            <div class="product-item" data-tooltip="Cleaning Products">
-                                <i class="fas fa-spray-can"></i>
-                            </div>
-                            <div class="product-item" data-tooltip="Cleaning Tools">
-                                <i class="fas fa-broom"></i>
-                            </div>
-                            <div class="product-item" data-tooltip="Hygiene Products">
-                                <i class="fas fa-soap"></i>
-                            </div>
-                            <div class="product-item" data-tooltip="Machinery">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                        </div>
-                        <div class="floating-elements">
-                            <div class="float-item" data-speed="2">
-                                <i class="fas fa-broom"></i>
-                            </div>
-                            <div class="float-item" data-speed="1.5">
-                                <i class="fas fa-spray-can"></i>
-                            </div>
-                            <div class="float-item" data-speed="2.5">
-                                <i class="fas fa-soap"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-number" data-target="500">0</div>
-                    <div class="stat-label">Happy Clients</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-box"></i>
-                    </div>
-                    <div class="stat-number" data-target="1000">0</div>
-                    <div class="stat-label">Products Delivered</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="stat-number" data-target="5">0</div>
-                    <div class="stat-label">Years Experience</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <div class="stat-number" data-target="24">0</div>
-                    <div class="stat-label">Hours Support</div>
-                </div>
+        <div class="hero-content">
+            <h1>Your Trusted Partner for Complete Cleaning Solutions</h1>
+            <p>Supplying quality cleaning products, accessories, and machinery to homes and institutions.</p>
+            <div class="hero-cta">
+                <a href="#contact" class="main-cta">Contact Us Today</a>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
     <section class="about" id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why Choose GK Enterprises?</h2>
+        <h2 class="section-title">Why Choose GK Enterprises?</h2>
+        <div class="about-content">
+            <div class="about-text">
                 <p>GK Enterprises is a one-stop destination for all cleaning and hygiene needs. We supply a wide range
-                    of Household and Institutional Cleaning Products to ensure hygiene, safety, and convenience.</p>
+                    of <strong>Household and Institutional Cleaning Products</strong> to ensure hygiene, safety, and
+                    convenience.</p>
+                <h3 style="color: #ff6b35; margin-bottom: 1rem;">Our Promise:</h3>
+                <div class="promises">
+                    <div class="promise-item">
+                        <i class="fas fa-star"></i><br>Quality Products
+                    </div>
+                    <div class="promise-item">
+                        <i class="fas fa-truck"></i><br>Reliable Supply
+                    </div>
+                    <div class="promise-item">
+                        <i class="fas fa-tag"></i><br>Competitive Pricing
+                    </div>
+                    <div class="promise-item">
+                        <i class="fas fa-boxes"></i><br>Bulk & Retail
+                    </div>
+                </div>
             </div>
-            <div class="promises-grid">
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>Quality Products</h3>
-                    <p>Premium cleaning solutions that deliver results</p>
-                    <div class="card-decoration"></div>
+
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Our Product Categories</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-home"></i>
                 </div>
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>Reliable Supply</h3>
-                    <p>Consistent availability and timely delivery</p>
-                    <div class="card-decoration"></div>
+                <h3>House Cleaning Products</h3>
+                <p>Complete range of household cleaning essentials for every corner of your home</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-utensils"></i>
                 </div>
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-tags"></i>
-                    </div>
-                    <h3>Competitive Pricing</h3>
-                    <p>Best value for your cleaning investment</p>
-                    <div class="card-decoration"></div>
+                <h3>Kitchen Cleaning Essentials</h3>
+                <p>Specialized products for maintaining a hygienic and spotless kitchen</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-hands-wash"></i>
                 </div>
-                <div class="promise-card">
-                    <div class="promise-icon">
-                        <i class="fas fa-boxes-stacked"></i>
-                    </div>
-                    <h3>Bulk & Retail</h3>
-                    <p>Available in all quantities you need</p>
-                    <div class="card-decoration"></div>
+                <h3>Personal Care & Hygiene</h3>
+                <p>Quality personal care products for health and hygiene maintenance</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-tshirt"></i>
                 </div>
+                <h3>Laundry Products & Chemicals</h3>
+                <p>Professional-grade laundry solutions for homes and commercial use</p>
+            </div>
+            <div class="product-card">
+                <div class="product-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Cleaning Accessories & Machinery</h3>
+                <p>Modern cleaning equipment and accessories for efficient cleaning</p>
             </div>
         </div>
     </section>
 
-    <!-- Product Categories -->
-    <section class="categories" id="categories">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Product Categories</h2>
-                <p>Comprehensive range of cleaning solutions for every need</p>
-            </div>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-visual">
-                        <div class="category-icon">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="category-image">
-                            <i class="fas fa-sparkles"></i>
-                        </div>
-                    </div>
-                    <h3>🏡 House Cleaning Products</h3>
-                    <p>Complete home cleaning solutions</p>
-                    <div class="category-features">
-                        <span>Floor Cleaners</span>
-                        <span>Bathroom Cleaners</span>
-                        <span>Glass Cleaners</span>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-visual">
-                        <div class="category-icon">
-                            <i class="fas fa-utensils"></i>
-                        </div>
-                        <div class="category-image">
-                            <i class="fas fa-sparkles"></i>
-                        </div>
-                    </div>
-                    <h3>🍳 Kitchen Cleaning Essentials</h3>
-                    <p>Hygienic kitchen maintenance</p>
-                    <div class="category-features">
-                        <span>Dish Soaps</span>
-                        <span>Surface Cleaners</span>
-                        <span>Degreasers</span>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-visual">
-                        <div class="category-icon">
-                            <i class="fas fa-hands-wash"></i>
-                        </div>
-                        <div class="category-image">
-                            <i class="fas fa-sparkles"></i>
-                        </div>
-                    </div>
-                    <h3>🧴 Personal Care & Hygiene</h3>
-                    <p>Personal hygiene products</p>
-                    <div class="category-features">
-                        <span>Hand Sanitizers</span>
-                        <span>Soaps</span>
-                        <span>Disinfectants</span>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-visual">
-                        <div class="category-icon">
-                            <i class="fas fa-tshirt"></i>
-                        </div>
-                        <div class="category-image">
-                            <i class="fas fa-sparkles"></i>
-                        </div>
-                    </div>
-                    <h3>👕 Laundry Products & Chemicals</h3>
-                    <p>Professional laundry solutions</p>
-                    <div class="category-features">
-                        <span>Detergents</span>
-                        <span>Fabric Softeners</span>
-                        <span>Stain Removers</span>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-visual">
-                        <div class="category-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <div class="category-image">
-                            <i class="fas fa-sparkles"></i>
-                        </div>
-                    </div>
-                    <h3>⚙️ Cleaning Accessories & Machinery</h3>
-                    <p>Tools and equipment for efficiency</p>
-                    <div class="category-features">
-                        <span>Mops & Brooms</span>
-                        <span>Vacuum Cleaners</span>
-                        <span>Cleaning Carts</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Who We Serve -->
+    <!-- Clients Section -->
     <section class="clients" id="clients">
-        <div class="container">
-            <div class="section-header">
-                <h2>Who We Serve</h2>
-                <p>We proudly supply cleaning solutions to various sectors</p>
-            </div>
+        <h2 class="section-title">Who We Serve</h2>
+        <div class="clients-section">
+            <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 2rem;">
+                We proudly supply cleaning solutions to:
+            </p>
             <div class="clients-grid">
-                <div class="client-card">
-                    <div class="client-visual">
-                        <div class="client-icon">
-                            <i class="fas fa-hospital"></i>
-                        </div>
-                        <div class="client-bg"></div>
-                    </div>
-                    <h3>🏥 Hospitals & Diagnostics</h3>
-                    <p>Medical-grade cleaning solutions</p>
-                    <div class="client-benefits">
-                        <span>Sterile Environments</span>
-                        <span>Infection Control</span>
+                <div class="client-item">
+                    <div class="client-icon"><i class="fas fa-hospital"></i></div>
+                    <div>
+                        <h4>Hospitals & Diagnostics</h4>
+                        <p>Medical-grade cleaning solutions</p>
                     </div>
                 </div>
-                <div class="client-card">
-                    <div class="client-visual">
-                        <div class="client-icon">
-                            <i class="fas fa-tshirt"></i>
-                        </div>
-                        <div class="client-bg"></div>
-                    </div>
-                    <h3>🧼 Laundry & Dry Cleaners</h3>
-                    <p>Professional laundry chemicals</p>
-                    <div class="client-benefits">
-                        <span>Fabric Care</span>
-                        <span>Stain Removal</span>
+                <div class="client-item">
+                    <div class="client-icon"><i class="fas fa-tshirt"></i></div>
+                    <div>
+                        <h4>Laundry & Dry Cleaners</h4>
+                        <p>Professional laundry chemicals</p>
                     </div>
                 </div>
-                <div class="client-card">
-                    <div class="client-visual">
-                        <div class="client-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="client-bg"></div>
-                    </div>
-                    <h3>🎓 Schools & Colleges</h3>
-                    <p>Educational institution supplies</p>
-                    <div class="client-benefits">
-                        <span>Safe for Children</span>
-                        <span>Cost Effective</span>
+                <div class="client-item">
+                    <div class="client-icon"><i class="fas fa-school"></i></div>
+                    <div>
+                        <h4>Schools & Colleges</h4>
+                        <p>Safe cleaning products for education</p>
                     </div>
                 </div>
-                <div class="client-card">
-                    <div class="client-visual">
-                        <div class="client-icon">
-                            <i class="fas fa-shopping-mall"></i>
-                        </div>
-                        <div class="client-bg"></div>
-                    </div>
-                    <h3>🛍️ Malls & Showrooms</h3>
-                    <p>Commercial cleaning products</p>
-                    <div class="client-benefits">
-                        <span>High Traffic Areas</span>
-                        <span>Professional Finish</span>
+                <div class="client-item">
+                    <div class="client-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <div>
+                        <h4>Malls & Showrooms</h4>
+                        <p>Commercial cleaning solutions</p>
                     </div>
                 </div>
-                <div class="client-card">
-                    <div class="client-visual">
-                        <div class="client-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <div class="client-bg"></div>
-                    </div>
-                    <h3>🏠 Households & Residential Complexes</h3>
-                    <p>Home cleaning essentials</p>
-                    <div class="client-benefits">
-                        <span>Family Safe</span>
-                        <span>Easy to Use</span>
+                <div class="client-item">
+                    <div class="client-icon"><i class="fas fa-building"></i></div>
+                    <div>
+                        <h4>Residential Complexes</h4>
+                        <p>Household cleaning supplies</p>
                     </div>
                 </div>
-                <div class="client-card">
-                    <div class="client-visual">
-                        <div class="client-icon">
-                            <i class="fas fa-industry"></i>
-                        </div>
-                        <div class="client-bg"></div>
-                    </div>
-                    <h3>🏢 Other Institutions</h3>
-                    <p>Bulk supply for organizations</p>
-                    <div class="client-benefits">
-                        <span>Bulk Pricing</span>
-                        <span>Custom Solutions</span>
+                <div class="client-item">
+                    <div class="client-icon"><i class="fas fa-industry"></i></div>
+                    <div>
+                        <h4>Bulk Institutions</h4>
+                        <p>Large-scale supply solutions</p>
                     </div>
                 </div>
             </div>
@@ -383,112 +1139,176 @@
 
     <!-- Contact Section -->
     <section class="contact" id="contact">
-        <div class="contact-background">
-            <div class="contact-pattern"></div>
-            <div class="contact-overlay"></div>
-        </div>
-        <div class="container">
-            <div class="section-header">
-                <h2>Get in Touch</h2>
-                <p>Ready to get started? Contact us today!</p>
+        <h2 class="section-title" style="color: white;">Get in Touch</h2>
+        <div class="contact-content">
+            <div class="contact-info">
+                <h3>Ready to Order?</h3>
+                <p>Place your orders now via Call, WhatsApp, or Email. Soon, you'll be able to order directly from this
+                    website!</p>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Call Us</h3>
-                            <p class="contact-number">7386438484</p>
-                            <span class="contact-availability">Available 24/7</span>
-                        </div>
-                        <div class="contact-decoration"></div>
+            <div class="contact-methods">
+                <a href="tel:7386438484" class="contact-btn">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Call Us</strong><br>
+                        <p style="font-size: 12px;">7386438484</p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon whatsapp-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>WhatsApp</h3>
-                            <p class="contact-number">7386438484</p>
-                            <span class="contact-availability">Quick Response</span>
-                        </div>
-                        <div class="contact-decoration"></div>
+                </a>
+                <a href="https://wa.me/917386438484" class="contact-btn">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp</strong><br>
+                        <p style="font-size: 12px;">7386438484</p>
                     </div>
-                    <div class="contact-item">
-                        <div class="contact-icon email-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p class="contact-email">gkenterprises.management@gmail.com</p>
-                            <span class="contact-availability">Professional Support</span>
-                        </div>
-                        <div class="contact-decoration"></div>
+                </a>
+                <a href="mailto:gkenterprises.management@gmail.com" class="contact-btn">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email Us</strong><br>
+                        <p style="font-size: 12px;">gkenterprises.management@gmail.com</p>
                     </div>
-                </div>
-                <div class="contact-actions">
-                    <div class="action-note-large">
-                        <div class="note-icon-large">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <div class="note-content-large">
-                            <strong>🚀 Place your orders now via Call, WhatsApp, or Email.</strong>
-                            <span>Soon, you'll be able to order directly from this website!</span>
-                        </div>
-                        <div class="note-decoration"></div>
-                    </div>
-                    <div class="contact-buttons">
-                        <a href="tel:7386438484" class="contact-btn call">
-                            <div class="btn-content">
-                                <i class="fas fa-phone"></i>
-                                <span>Call Now</span>
-                            </div>
-                            <div class="btn-glow"></div>
-                        </a>
-                        <a href="https://wa.me/7386438484" class="contact-btn whatsapp" target="_blank">
-                            <div class="btn-content">
-                                <i class="fab fa-whatsapp"></i>
-                                <span>WhatsApp</span>
-                            </div>
-                            <div class="btn-glow"></div>
-                        </a>
-                        <a href="mailto:gkenterprises.management@gmail.com" class="contact-btn email">
-                            <div class="btn-content">
-                                <i class="fas fa-envelope"></i>
-                                <span>Email</span>
-                            </div>
-                            <div class="btn-glow"></div>
-                        </a>
-                    </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <div class="footer-logo-icon">
-                        <img src="logo.png" alt="GK Enterprises Logo" class="footer-logo-image">
-                    </div>
-                    <span>GK Enterprises</span>
-                </div>
-                <p class="footer-tagline">Premium Cleaning Solutions</p>
-                <div class="footer-social">
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                </div>
-                <p class="footer-copyright">© GK Enterprises | All Rights Reserved</p>
-            </div>
-        </div>
+    <footer>
+        <p>
+            2024 GK Enterprises | All Rights Reserved</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Premium Cleaning Solutions </p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // FontAwesome fallback detection
+        function checkFontAwesome() {
+            const testElement = document.createElement('i');
+            testElement.className = 'fas fa-home';
+            testElement.style.position = 'absolute';
+            testElement.style.left = '-999px';
+            document.body.appendChild(testElement);
+
+            const computedStyle = window.getComputedStyle(testElement, ':before');
+            const content = computedStyle.getPropertyValue('content');
+
+            document.body.removeChild(testElement);
+
+            // If FontAwesome didn't load, the content will be empty or 'none'
+            if (!content || content === 'none' || content === '""') {
+                document.body.classList.add('fa-fallback');
+            }
+        }
+
+        // Check FontAwesome after DOM loads
+        document.addEventListener('DOMContentLoaded', checkFontAwesome);
+
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const menuClose = document.getElementById('menuClose');
+        const offCanvasMenu = document.getElementById('offCanvasMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        // Open mobile menu
+        function openMobileMenu() {
+            offCanvasMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // Reset animations for menu items
+            const menuItems = offCanvasMenu.querySelectorAll('.menu-item');
+            menuItems.forEach((item, index) => {
+                item.style.animation = 'none';
+                setTimeout(() => {
+                    item.style.animation = `slideInFromRight 0.5s ease-out ${(index + 1) * 0.1}s forwards`;
+                }, 50);
+            });
+        }
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            offCanvasMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+        if (menuClose) menuClose.addEventListener('click', closeMobileMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close menu when clicking on navigation links
+        document.querySelectorAll('[data-close-menu]').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && offCanvasMenu && offCanvasMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for scroll animations
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add floating effect to contact buttons on hover
+        document.querySelectorAll('.contact-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateX(10px) translateY(-5px)';
+            });
+
+            btn.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateX(10px)';
+            });
+        });
+
+        // Add pulse effect to CTA buttons
+        setInterval(() => {
+            document.querySelectorAll('.main-cta').forEach(btn => {
+                btn.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    btn.style.transform = 'scale(1)';
+                }, 200);
+            });
+        }, 3000);
+
+        // Handle window resize to close mobile menu if opened on mobile and then resized to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && offCanvasMenu && offCanvasMenu.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+    </script>
 </body>
 
 </html>

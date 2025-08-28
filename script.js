@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initContactForm();
     initMobileMenu();
     animateCounters();
+    initMobileMenuToggle();
     // Add loading animation
     document.body.classList.add('loading');
     setTimeout(() => {
@@ -397,3 +398,41 @@ function optimizePerformance() {
 
 // Initialize performance optimization
 optimizePerformance();
+
+// Mobile menu toggle functionality
+function initMobileMenuToggle() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+    if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking close button
+        if (mobileMenuClose) {
+            mobileMenuClose.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        }
+
+        // Close mobile menu when clicking outside
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when clicking on contact links
+        document.querySelectorAll('.mobile-contact-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                mobileMenu.classList.remove('active');
+            });
+        });
+    }
+}
